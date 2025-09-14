@@ -1,0 +1,165 @@
+/* :root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --bg-color: #242424;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --primary-color: #646cff;
+  --border-color: #535bf2;
+  --card-bg: #1a1a1a;
+}
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+#root { max-width: 700px; margin: 0 auto; padding: 2rem; text-align: center; width: 100%;}
+.auth-container, .chat-container { display: flex; flex-direction: column; gap: 1rem; background-color: var(--card-bg); padding: 2rem; border-radius: 8px; max-width: 400px; margin: 2rem auto; }
+input { padding: 0.6em 1.2em; font-size: 1em; border-radius: 8px; border: 1px solid transparent; background-color: #333; color: var(--text-color); }
+button { border-radius: 8px; border: 1px solid transparent; padding: 0.6em 1.2em; font-size: 1em; font-weight: 500; font-family: inherit; background-color: var(--primary-color); cursor: pointer; transition: border-color 0.25s; }
+button:hover { border-color: var(--border-color); }
+button:disabled { background-color: #444; cursor: not-allowed; }
+.chat-box { height: 50vh; overflow-y: auto; border: 1px solid #444; padding: 1rem; border-radius: 8px; display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+.message { padding: 0.5rem 1rem; border-radius: 15px; max-width: 80%; word-wrap: break-word; line-height: 1.4; }
+.user { background-color: var(--primary-color); align-self: flex-end; border-bottom-right-radius: 2px; }
+.assistant { background-color: #444; align-self: flex-start; border-bottom-left-radius: 2px; }
+.typing-indicator { align-self: flex-start; color: #888; font-style: italic;}
+.chat-input { display: flex; gap: 0.5rem; }
+.chat-input input { flex-grow: 1; }
+.logout-btn { position: absolute; top: 20px; right: 20px; background-color: #555;} */
+
+
+
+/* client/src/index.css */
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --bg-color: #242424;
+  --card-bg: #1a1a1a;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --primary-color: #646cff;
+  --border-color: #535bf2;
+  --hover-color: #535bf2;
+  --error-color: #ff6b6b;
+}
+
+/* === Main Page Layout (The Key Fix) === */
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  /* Use Flexbox to center everything inside the body */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;    /* Center vertically */
+  min-height: 100vh;      /* Make the body take up the full screen height */
+}
+
+#root {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* === Authentication Form Styling === */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Increased gap for better spacing */
+  background-color: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto; /* Ensures it stays centered if #root is wider */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
+
+.auth-container h1 {
+  margin: 0 0 0.5rem 0; /* Adjust heading margin */
+}
+
+/* Style the form itself for better internal layout */
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input {
+  padding: 0.8em 1.2em; /* Slightly larger padding */
+  font-size: 1em;
+  border-radius: 8px;
+  border: 1px solid #444; /* Add a subtle border */
+  background-color: #333;
+  color: var(--text-color);
+  transition: border-color 0.2s; /* Smooth transition on focus */
+}
+
+/* Highlight the input box when the user clicks on it */
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.8em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+button:hover {
+  background-color: var(--hover-color);
+}
+
+button:disabled {
+  background-color: #444;
+  cursor: not-allowed;
+}
+
+/* Style the "Don't have an account?" text */
+.auth-container p {
+  margin-top: 0.5rem;
+  font-size: 0.9em;
+}
+
+.auth-container a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}
+
+/* === Chat Container Styling (already good, minor tweaks) === */
+.chat-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.chat-box { height: 60vh; overflow-y: auto; border: 1px solid #444; padding: 1rem; border-radius: 8px; display: flex; flex-direction: column; gap: 1rem; text-align: left; }
+.message { padding: 0.5rem 1rem; border-radius: 15px; max-width: 80%; word-wrap: break-word; line-height: 1.4; }
+.user { background-color: var(--primary-color); align-self: flex-end; border-bottom-right-radius: 2px; }
+.assistant { background-color: #444; align-self: flex-start; border-bottom-left-radius: 2px; }
+.typing-indicator { align-self: flex-start; color: #888; font-style: italic;}
+.chat-input { display: flex; gap: 0.5rem; }
+.chat-input input { flex-grow: 1; }
+.logout-btn { position: absolute; top: 20px; right: 20px; background-color: #f5b4b4;}
