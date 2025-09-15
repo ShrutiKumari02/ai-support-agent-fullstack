@@ -59,7 +59,7 @@ text
 MONGO_URI=your_mongodb_atlas_connection_string_here
 
 # A long, random, and secret string for signing JWTs
-JWT_SECRET=your_super_secret_jwt_key
+JWT_SECRET=your_secret_jwt_key
 
 # The port for the backend server
 PORT=5001
